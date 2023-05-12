@@ -1,35 +1,29 @@
-import { useEffect } from "react";
-import React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from "react";
 
+const CountdownTimer = ({ remainingTime, onTimerEnd }) => {
+  const [time, setTime] = useState(remainingTime);
 
-const CountdownTimer = ({remainingTime, onTimerEnd}) => {
-    const [timeLeft, setTimeLeft] = useState(remainingTime);
+  useEffect(() => {
+    if (time > 0) {
+      const timer = setTimeout(() => {
+        setTime((prevTime) => prevTime - 1);
+      }, 1000);
 
-    useEffect(() =>{
-        if (remainingTime === 0){
-            onTimerEnd();
-        }
+      return () => clearTimeout(timer);
+    } else {
+      onTimerEnd();
+    }
+  }, [time, onTimerEnd]);
 
-        const timer = setTimeout(()=> {
-            setTimeLeft(remainingTime - 1);
-        }, 1000);
-        return () => clearTimeout(timer);
-    }, [remainingTime, onTimerEnd]);
+  useEffect(() => {
+    setTime(remainingTime);
+  }, [remainingTime]);
 
-    return (
-        <div>
-            <p>Remaining Time: {remainingTime}</p>
-        </div>
-
-
-
-        
-
-    );
-
-
-
-    
+  return (
+    <div>
+      <p>Remaining Time: {time}</p>
+    </div>
+  );
 };
+
 export default CountdownTimer;

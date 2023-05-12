@@ -1,13 +1,14 @@
 import React from 'react';
 
-const FoootballerInfo = ({footballer}) => {
+const FootballerInfo = ({footballer}) => {
 
     return (
         <div>
+            <img src=''></img>
             <p>nationality: {footballer.nationality}</p>
             <p>team: {footballer.team}</p>
             <p>position: {footballer.position}</p>
         </div>
     )
 };
-export default FoootballerInfo;
+export default FootballerInfo;

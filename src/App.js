@@ -10,12 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      {!gameStarted ? (
-        <button onClick={handleStartGame}>Start Game</button>
-      ) : (
-        <Quiz />
-      )}
-    </div>
+      {!gameStarted ? ( <button onClick={handleStartGame}>Start Game</button>) : (<Quiz />)}</div>
   );
 }
 
